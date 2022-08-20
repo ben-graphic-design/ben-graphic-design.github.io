@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            position: fixed;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+    </style>
+</head>
+<body style="background-color:#FCFCFC;">
+
+<div class="imgbox">
+    <img id="scream" class="center-fit" style="transform: scale(1);" src='frames/frame-1.png'>
+</div>
+
+<p style="padding: 200em 0em 200em 0em;"></p>
+
+<script>
+
+window.onscroll = function() {
+    var top = window.pageYOffset;
+    var img = document.getElementById("scream");
+    if (top < 1000 && top > 10) {
+        img.src = `frames/frame-${Math.round(top/10)}.png`;
+        img.style = `transform: scale(${(top/2000)+1});`
+    } else if (top > 1000) {
+
+    }
+};
+</script>
+
+</body>
+</html>
