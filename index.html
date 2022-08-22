@@ -1,156 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>draw2</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        .imgbox {
-            display: grid;
-            height: 100%;
-            width: 100%;
-            margin: auto;
-            position: fixed;
-        }
-        .center-fit {
-            max-width: 100%;
-            max-height: 100vh;
-            margin: auto;
-        }
+        @font-face { font-family: DMSans; src: url('DMSans-Regular.ttf'); }
+        @font-face { font-family: DMSans; font-weight: medium; src: url('DMSans-Medium.ttf'); }
+        @font-face { font-family: DMSans; font-weight: bold; src: url('DMSans-Bold.ttf'); }
+        h1 { font-family: DMSans; font-weight: bold; }
     </style>
-    <link rel="preload" href="frames/frame-1.png" as="image">
-    <link rel="preload" href="frames/frame-2.png" as="image">
-    <link rel="preload" href="frames/frame-3.png" as="image">
-    <link rel="preload" href="frames/frame-4.png" as="image">
-    <link rel="preload" href="frames/frame-5.png" as="image">
-    <link rel="preload" href="frames/frame-6.png" as="image">
-    <link rel="preload" href="frames/frame-7.png" as="image">
-    <link rel="preload" href="frames/frame-8.png" as="image">
-    <link rel="preload" href="frames/frame-9.png" as="image">
-    <link rel="preload" href="frames/frame-10.png" as="image">
-    <link rel="preload" href="frames/frame-11.png" as="image">
-    <link rel="preload" href="frames/frame-12.png" as="image">
-    <link rel="preload" href="frames/frame-13.png" as="image">
-    <link rel="preload" href="frames/frame-14.png" as="image">
-    <link rel="preload" href="frames/frame-15.png" as="image">
-    <link rel="preload" href="frames/frame-16.png" as="image">
-    <link rel="preload" href="frames/frame-17.png" as="image">
-    <link rel="preload" href="frames/frame-18.png" as="image">
-    <link rel="preload" href="frames/frame-19.png" as="image">
-    <link rel="preload" href="frames/frame-20.png" as="image">
-    <link rel="preload" href="frames/frame-21.png" as="image">
-    <link rel="preload" href="frames/frame-22.png" as="image">
-    <link rel="preload" href="frames/frame-23.png" as="image">
-    <link rel="preload" href="frames/frame-24.png" as="image">
-    <link rel="preload" href="frames/frame-25.png" as="image">
-    <link rel="preload" href="frames/frame-26.png" as="image">
-    <link rel="preload" href="frames/frame-27.png" as="image">
-    <link rel="preload" href="frames/frame-28.png" as="image">
-    <link rel="preload" href="frames/frame-29.png" as="image">
-    <link rel="preload" href="frames/frame-30.png" as="image">
-    <link rel="preload" href="frames/frame-31.png" as="image">
-    <link rel="preload" href="frames/frame-32.png" as="image">
-    <link rel="preload" href="frames/frame-33.png" as="image">
-    <link rel="preload" href="frames/frame-34.png" as="image">
-    <link rel="preload" href="frames/frame-35.png" as="image">
-    <link rel="preload" href="frames/frame-36.png" as="image">
-    <link rel="preload" href="frames/frame-37.png" as="image">
-    <link rel="preload" href="frames/frame-38.png" as="image">
-    <link rel="preload" href="frames/frame-39.png" as="image">
-    <link rel="preload" href="frames/frame-40.png" as="image">
-    <link rel="preload" href="frames/frame-41.png" as="image">
-    <link rel="preload" href="frames/frame-42.png" as="image">
-    <link rel="preload" href="frames/frame-43.png" as="image">
-    <link rel="preload" href="frames/frame-44.png" as="image">
-    <link rel="preload" href="frames/frame-45.png" as="image">
-    <link rel="preload" href="frames/frame-46.png" as="image">
-    <link rel="preload" href="frames/frame-47.png" as="image">
-    <link rel="preload" href="frames/frame-48.png" as="image">
-    <link rel="preload" href="frames/frame-49.png" as="image">
-    <link rel="preload" href="frames/frame-50.png" as="image">
-    <link rel="preload" href="frames/frame-51.png" as="image">
-    <link rel="preload" href="frames/frame-52.png" as="image">
-    <link rel="preload" href="frames/frame-53.png" as="image">
-    <link rel="preload" href="frames/frame-54.png" as="image">
-    <link rel="preload" href="frames/frame-55.png" as="image">
-    <link rel="preload" href="frames/frame-56.png" as="image">
-    <link rel="preload" href="frames/frame-57.png" as="image">
-    <link rel="preload" href="frames/frame-58.png" as="image">
-    <link rel="preload" href="frames/frame-59.png" as="image">
-    <link rel="preload" href="frames/frame-60.png" as="image">
-    <link rel="preload" href="frames/frame-61.png" as="image">
-    <link rel="preload" href="frames/frame-62.png" as="image">
-    <link rel="preload" href="frames/frame-63.png" as="image">
-    <link rel="preload" href="frames/frame-64.png" as="image">
-    <link rel="preload" href="frames/frame-65.png" as="image">
-    <link rel="preload" href="frames/frame-66.png" as="image">
-    <link rel="preload" href="frames/frame-67.png" as="image">
-    <link rel="preload" href="frames/frame-68.png" as="image">
-    <link rel="preload" href="frames/frame-69.png" as="image">
-    <link rel="preload" href="frames/frame-70.png" as="image">
-    <link rel="preload" href="frames/frame-71.png" as="image">
-    <link rel="preload" href="frames/frame-72.png" as="image">
-    <link rel="preload" href="frames/frame-73.png" as="image">
-    <link rel="preload" href="frames/frame-74.png" as="image">
-    <link rel="preload" href="frames/frame-75.png" as="image">
-    <link rel="preload" href="frames/frame-76.png" as="image">
-    <link rel="preload" href="frames/frame-77.png" as="image">
-    <link rel="preload" href="frames/frame-78.png" as="image">
-    <link rel="preload" href="frames/frame-79.png" as="image">
-    <link rel="preload" href="frames/frame-80.png" as="image">
-    <link rel="preload" href="frames/frame-81.png" as="image">
-    <link rel="preload" href="frames/frame-82.png" as="image">
-    <link rel="preload" href="frames/frame-83.png" as="image">
-    <link rel="preload" href="frames/frame-84.png" as="image">
-    <link rel="preload" href="frames/frame-85.png" as="image">
-    <link rel="preload" href="frames/frame-86.png" as="image">
-    <link rel="preload" href="frames/frame-87.png" as="image">
-    <link rel="preload" href="frames/frame-88.png" as="image">
-    <link rel="preload" href="frames/frame-89.png" as="image">
-    <link rel="preload" href="frames/frame-90.png" as="image">
-    <link rel="preload" href="frames/frame-91.png" as="image">
-    <link rel="preload" href="frames/frame-92.png" as="image">
-    <link rel="preload" href="frames/frame-93.png" as="image">
-    <link rel="preload" href="frames/frame-94.png" as="image">
-    <link rel="preload" href="frames/frame-95.png" as="image">
-    <link rel="preload" href="frames/frame-96.png" as="image">
-    <link rel="preload" href="frames/frame-97.png" as="image">
-    <link rel="preload" href="frames/frame-98.png" as="image">
-    <link rel="preload" href="frames/frame-99.png" as="image">
-    <link rel="preload" href="frames/frame-100.png" as="image">
-    <link rel="preload" href="frames/frame-101.png" as="image">
 </head>
-<body style="background-color:#FCFCFC;">
-
-<div id="imgdiv" class="imgbox" style="position: fixed;">
-    <img id="scream" class="center-fit" style="transform: scale(1);" src='frames/frame-1.png'>
+<body style="overflow-x: hidden;">
+<div id="imgdiv" style="position: fixed; height: 100%; width: 100%; display: grid; margins: auto;">
+    <img id="object2" src="object2.svg" style="position: fixed; bottom: -20vh; left: -20vw;">
+    <img id="object1" src="object1.svg" style="position: fixed; top: -20vh; right: -20vw;">
+    <h1 id="portfoliotext" style="position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);">Graphic Design Portfolio</h1>
+    <img id="object1over" src="object1.svg" style="position: fixed; top: -20vh; right: -20vw; opacity: 0%;">
+    <h1 id="bynametext" style="position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; opacity: 0%; transform: translateY(-50%);">By Ben</h1>
 </div>
-    
-<div id="scrollchev" class="imgbox">
-    <img src="scroll.svg" id="chevicon" style="position: fixed; bottom: 0; margin-left: 45%; width: 10%; margin-right: 45%;">
-</div>
-
-<p style="padding: 140em 0em 0em 0em;"></p>
-
-<img src="comingsoon.svg" style="width: 100%;">
 
 <script>
+window.onload = function() {
+    const top = window.pageYOffset;
+    const object1 = document.getElementById("object1");
+    const object2 = document.getElementById("object2");
+    const object1over = document.getElementById("object1over");
+    const soontext = document.getElementById("soontext");
+    const pad = document.getElementById("pad");
+    pad.style = `padding: ${window.innerHeight + 2200}px 0px 0px 0px; margin: 0;`
+    soontext.style.marginBottom = `${(window.innerHeight - soontext.clientHeight)/2}px`;
+    soontext.style.marginTop = `${(window.innerHeight - soontext.clientHeight)/2}px`;
+    object1.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+    object1over.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+    object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+};
+const placeObj = (object, initialposition, finalposition, halfimgheight, ease, initialposition2, finalposition2, ease2, rotate) => {
+    object.style = `position: fixed; top: ${initialposition + ((finalposition - (initialposition + halfimgheight)) * ease)}px; right: ${initialposition2 + ((finalposition2 - (initialposition2 + halfimgheight)) * ease2)}px; transform: rotate(${rotate}deg);`
+};
 window.onscroll = function() {
-    var top = window.pageYOffset;
-    var img = document.getElementById("scream");
-    var imgdiv = document.getElementById("imgdiv");
-    if (top < 1000 && top > 10) {
-        img.src = `frames/frame-${Math.round(top/10)}.png`;
-        img.style = `transform: scale(${(top/2000)+1})`;
-        chevicon.style=`transform: scale(${(top/2000)+1}); position: fixed; bottom: 0; margin-left: 45%; width: 10%; margin-right: 45%; opacity: ${1-(top/500)};`;
-        imgdiv.style = "position: fixed;"
-    } else if (top > 1000) {
-        img.src = "frames/frame-100.png";
-        imgdiv.style = "position: absolute; top: 1000px;"
+    const top = window.pageYOffset;
+    const windowheight = window.innerHeight;
+    const windowwidth = window.innerWidth;
+    const quadease = ((2*(top/1000))*(2-(top/1000)))/2;
+    const initialposition = windowheight * -0.2;
+    const finalposition = windowheight;
+    const halfimgheight = (((windowheight * 0.7) + (windowwidth * 1.3))/6);
+    const initialposition2 = windowheight * -0.2;
+    const finalposition2 = (windowwidth / 2);
+    const rotate = 180 * (top/1000);
+    const topper = (top/1000)+0.001;
+    const topper2 = ((top-1000)/500)+0.001;
+    const texttopper = ((top-1000)/500);
+    const rotate2 = 230 * ((topper*topper)/(topper*topper)+((1-topper)*(1-topper)));
+    const scale = ((topper2*topper2)/(((topper2 * topper2)+((1 - topper2) * (1 - topper2)))))*1.5;
+    const textscale = ((texttopper*texttopper)/(((texttopper * texttopper)+((1 - texttopper) * (1 - texttopper)))));
+    const linear = top/1000;
+    const object1 = document.getElementById("object1");
+    const object2 = document.getElementById("object2");
+    const object1over = document.getElementById("object1over");
+    const bynametext = document.getElementById("bynametext");
+    const imgdiv = document.getElementById("imgdiv");
+    const portfoliotext = document.getElementById("portfoliotext");
+    if (top <= 1000) {
+        placeObj(object1, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
+        placeObj(object1over, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
+        object1.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        object1over.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        object1over.style.opacity = "0%";
+        object2.style = `position: fixed; bottom: -20vh; left: -20vw; transform: rotate(${rotate2}deg)`;
+        object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        bynametext.style = `position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(0) translateY(-50%); opacity: 0%;`;
+        imgdiv.style = `position: fixed; transform: scale(${top/2000+1}); height: 100%; width: 100%; display: grid; margins: auto;`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
+    } else if (top > 1000 && top <= 1500) {
+        object1.style = `position: fixed; top: ${finalposition - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; right: ${finalposition2 - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; transform: rotate(${rotate}deg);;`;
+        object1over.style = `position: fixed; top: ${finalposition - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; right: ${finalposition2 - ((((windowheight * 0.7) + (windowwidth * 1.3))/6) + (((window.innerHeight + window.innerWidth) * scale) / 2))}px; transform: rotate(${rotate}deg); opacity: ${(top - 1000) / 2.5}%;`;
+        object1.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3)  + ((window.innerHeight + window.innerWidth) * scale)}px`;
+        object1over.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3) + ((window.innerHeight + window.innerWidth) * scale)}px`;
+        object2.style = `position: fixed; bottom: -20vh; left: -20vw; transform: rotate(${rotate2}deg)`;
+        object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        bynametext.style = `position: fixed; top: ${100 - (50 * textscale)}%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(${textscale}) translateY(-50%); opacity: ${textscale*100}%;`;
+        imgdiv.style = `position: fixed; transform: scale(1.5); height: 100%; width: 100%; display: grid; margins: auto;`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
+    } else if (top > 1500) {
+        imgdiv.style = `position: absolute; top: 1500px; transform: scale(1.5); height: 100%; width: 100vw; display: grid; margins: auto;`;
+        object1.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3)  + ((window.innerHeight + window.innerWidth) * (1 - ((top - 1500)/2000)))}px`;
+        object1over.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3) + ((window.innerHeight + window.innerWidth) * (1 - ((top - 1500)/2000)))}px`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%); opacity: 0%;"
+        bynametext.style = `position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1) translateY(-50%); opacity: ${100 - ((top - 1500)/5)}%;`
+    }
+};
+window.onresize = function() {
+    const top = window.pageYOffset;
+    const windowheight = window.innerHeight;
+    const windowwidth = window.innerWidth;
+    const quadease = ((2*(top/1000))*(2-(top/1000)))/2;
+    const initialposition = windowheight * -0.2;
+    const finalposition = windowheight;
+    const halfimgheight = (((windowheight * 0.7) + (windowwidth * 1.3))/6);
+    const initialposition2 = windowheight * -0.2;
+    const finalposition2 = (windowwidth / 2);
+    const rotate = 180 * (top/1000);
+    const topper = (top/1000)+0.001;
+    const topper2 = ((top-1000)/500)+0.001;
+    const texttopper = ((top-1000)/500);
+    const rotate2 = 230 * ((topper*topper)/(topper*topper)+((1-topper)*(1-topper)));
+    const scale = ((topper2*topper2)/(((topper2 * topper2)+((1 - topper2) * (1 - topper2)))))*1.5;
+    const textscale = ((texttopper*texttopper)/(((texttopper * texttopper)+((1 - texttopper) * (1 - texttopper)))));
+    const linear = top/1000;
+    const object1 = document.getElementById("object1");
+    const object2 = document.getElementById("object2");
+    const object1over = document.getElementById("object1over");
+    const bynametext = document.getElementById("bynametext");
+    const imgdiv = document.getElementById("imgdiv");
+    const portfoliotext = document.getElementById("portfoliotext");
+    const pad = document.getElementById("pad");
+    const soontext = document.getElementById("soontext");
+    pad.style = `padding: ${window.innerHeight + 2200}px 0px 0px 0px;`
+    soontext.style.marginBottom = `${(window.innerHeight - soontext.clientHeight)/2}px`;
+    soontext.style.marginTop = `${(window.innerHeight - soontext.clientHeight)/2}px`;
+    if (top <= 1000) {
+        placeObj(object1, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
+        placeObj(object1over, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
+        object1.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        object1over.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        object1over.style.opacity = "0%";
+        object2.style = `position: fixed; bottom: -20vh; left: -20vw; transform: rotate(${rotate2}deg)`;
+        object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        bynametext.style = `position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(0) translateY(-50%); opacity: 0%;`;
+        imgdiv.style = `position: fixed; transform: scale(${top/2000+1}); height: 100%; width: 100%; display: grid; margins: auto;`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
+    } else if (top > 1000 && top <= 1500) {
+        object1.style = `position: fixed; top: ${finalposition - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; right: ${finalposition2 - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; transform: rotate(${rotate}deg);;`;
+        object1over.style = `position: fixed; top: ${finalposition - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * scale) / 2)}px; right: ${finalposition2 - ((((windowheight * 0.7) + (windowwidth * 1.3))/6) + (((window.innerHeight + window.innerWidth) * scale) / 2))}px; transform: rotate(${rotate}deg); opacity: ${(top - 1000) / 2.5}%;`;
+        object1.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3)  + ((window.innerHeight + window.innerWidth) * scale)}px`;
+        object1over.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3) + ((window.innerHeight + window.innerWidth) * scale)}px`;
+        object2.style = `position: fixed; bottom: -20vh; left: -20vw; transform: rotate(${rotate2}deg)`;
+        object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
+        bynametext.style = `position: fixed; top: ${100 - (50 * textscale)}%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(${textscale}) translateY(-50%); opacity: ${textscale*100}%;`;
+        imgdiv.style = `position: fixed; transform: scale(1.5); height: 100%; width: 100%; display: grid; margins: auto;`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
+    } else if (top > 1500) {
+        imgdiv.style = `position: absolute; top: 1500px; transform: scale(1.5); height: 100%; width: 100vw; display: grid; margins: auto;`;
+        object1.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3)  + ((window.innerHeight + window.innerWidth) * (1 - ((top - 1500)/2000)))}px`;
+        object1over.style.height = `${(((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3) + ((window.innerHeight + window.innerWidth) * (1 - ((top - 1500)/2000)))}px`;
+        portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%); opacity: 0%;"
+        bynametext.style = `position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1) translateY(-50%); opacity: ${100 - ((top - 1500)/5)}%;`
     }
 };
 </script>
-
+<h1 id="pad" style="padding: 2200px 0px 0px 0px; margin: 0;"></h1>
+<h1 id="soontext" style="text-align: center; font-size: 20vh; color: #3c4043ff;">Coming <br> Soon</h1>
 </body>
 </html>
