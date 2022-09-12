@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Me</title>
+    <title>Projects</title>
     <style>
         @font-face { font-family: DMSans; src: url('DMSans-Regular.ttf'); }
         @font-face { font-family: DMSans; font-weight: medium; src: url('DMSans-Medium.ttf'); }
@@ -34,6 +34,21 @@
 	.active {
 	background-color: #d5a543;
 	}
+
+	#link1:hover:not(.active) {
+  	background: #dddddd;
+	}
+	.active {
+	background: #d5a543;
+	}
+
+	#link2:hover:not(.active) {
+  	background: #dddddd;
+	}
+
+    #link2:hover:.active {
+	background: #d5a543;
+	}
     </style>
 </head>
 <body>
@@ -44,8 +59,12 @@
   <li style="float:right"><a href="about.html">About</a></li>
 </ul>
 <h1 style="position: relative; top: calc(2.75vh + 3vw); color: #3c4043ff; font-size: 4vh; width: 100%; text-align: center;">Projects by me</h1>
-<p style="position: relative; top: calc(2.75vh + 3vw); width: calc(100% - calc(40px + 2vh)); text-align: center; margin: 1vh; font-size: 3vh; border-radius: 25px; padding: 20px; background: #b2f0ab; font-family: DMSans; font-weight: medium;">
-Coming soon
-</p>
+<!--<div style="position: relative; top: calc(2.75vh + 3vw); width: calc(100% - (40px + 2vh)); height: calc(23vh + 2vw); text-align: center; margin: 1vh; font-size: 3vh; border-radius: 25px; padding: 20px; background: #b2f0ab; font-family: DMSans; font-weight: medium;">-->
+<!-- 26 vh height when 2 links below, 12 with 1 -->
+<!--<a href="projects/pr1.html" style="position: relative; top: calc(6.75vh + 3vw); text-align: center; display: block; margin: 0 auto; height: 8vh; font-size: 2vw; border-radius: 25px; padding-top: 2vh; padding-bottom: 2vh; padding-left: calc(((100vw - (40px + 2vh) - 15vh)) / 4); padding-right: calc(((100vw - (40px + 2vh) - 15vh)) / 4); width: calc(100vw - (40px + 2vh));  box-width: 100%; sizing: border-box; background: #dddddd; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none;">Design I Admire</a>-->
+<!--<a href="projects/pr2.html" style="position: relative; top: calc(16.75vh + 3vw); text-align: center; margin: 1vh; height: 8vh; font-size: 2vw; border-radius: 25px; padding-top: 2vh; padding-bottom: 2vh; padding-left: calc(((100vw - (40px + 2vh) - 15vh)) / 4); padding-right: calc(((100vw - (40px + 2vh) - 15vh)) / 4); width: calc(100vw - (40px + 2vh));  box-width: 100%; sizing: border-box; background: #dddddd; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none;">meow</a>-->
+<a id="link1" href="projects/pr1.html" style="position: relative; top: calc(4vh + 4vw); display: block; margin-left: auto; margin-right: auto; font-size: 3vh; padding-left: 3vw; padding-right: 3vw; padding-top: 3vh; padding-bottom: 3vh; border-radius: 25px; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none; text-align: center;">Design I Admire</a>
+<a id="link2" href="projects/pr2.html" style="position: relative; top: calc(8vh + 4vw); display: block; margin-left: auto; margin-right: auto; font-size: 3vh; padding-left: 3vw; padding-right: 3vw; padding-top: 3vh; padding-bottom: 3vh; border-radius: 25px; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none; text-align: center;">Meow</a>
+<!--</div>-->
 </body>
 </html>
