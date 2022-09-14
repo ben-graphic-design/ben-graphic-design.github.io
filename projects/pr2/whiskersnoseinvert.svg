@@ -24,12 +24,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.10298728"
-     inkscape:cx="4170.4179"
-     inkscape:cy="1810.9032"
+     inkscape:cx="4097.5934"
+     inkscape:cy="1806.0483"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1031"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -40,7 +40,7 @@
      id="layer1">
     <path
        id="rect867"
-       style="fill:#e1d6ca;fill-opacity:1;stroke:#3c4043;stroke-width:0.999999"
+       style="fill:#e1d6ca;fill-opacity:1;stroke:none;stroke-width:0.999999"
        d="M -86.078125,-71.441406 V 3982.6875 H 7880.748 V -71.441406 Z M 3779.5273,1454.293 c 178.695,0 357.3906,50.384 415.5704,151.1543 116.3595,201.5406 -182.8513,719.789 -415.5704,719.789 -232.719,0 -531.9298,-518.2484 -415.5703,-719.789 58.1798,-100.7703 236.8754,-151.1543 415.5703,-151.1543 z"
        transform="scale(0.26458333)" />
   </g>
