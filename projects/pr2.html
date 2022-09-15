@@ -42,7 +42,7 @@
     </style>
     <link rel="prerender" href='./pr2/whiskersnoserevert.png'>
 </head>
-<body style="background-color: #E1D6CA;">
+<body id="body" style="background-color: #E1D6CA;">
 <div id="meow1div" style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; margins: auto;">
     <div class="top left"></div>
         <img id="meow1l1" src="./pr2/meow1l1.svg" style="position: absolute; left: calc((50vw) - (((10vh + 10vw) * 2.814232586) / 2)); top: calc((3vh + 3vw) + (50vh  - (8vh + 8vw))); height: calc(10vh + 10vw);">
@@ -90,6 +90,7 @@ window.onscroll = function() {
     var top = window.pageYOffset;
     const windowheight = window.innerHeight;
     const windowwidth = window.innerWidth;
+    const body = document.getElementById("body");
     const meow1l1 = document.getElementById("meow1l1");
     const meow1l2 = document.getElementById("meow1l2");
     const meow1l3 = document.getElementById("meow1l3");
@@ -164,7 +165,9 @@ window.onscroll = function() {
         };
     };
     if (top > (5 * windowheight) && top < (6 * windowheight)) {
-        whiskersnose.opacity = "100%";
+        whiskersnose.style.opacity = "1";
+	whiskersnoseinvert.style.opacity = "0";
+	body.style = "background-color: #3c4043ff;";
         whiskersnoserevert1.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 20)}) rotate(${(top/2) * -1}deg);`
         whiskersnoserevert2.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 40)}) rotate(${top/2}deg);`
         whiskersnoserevert3.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 60)}) rotate(${(top/2.1) * -1}deg);`
@@ -185,7 +188,7 @@ window.onscroll = function() {
         whiskersnoserevert18.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 360)}) rotate(${top/2.8}deg);`
         whiskersnoserevert19.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 380)}) rotate(${(top/2.9) * -1}deg);`
         whiskersnoserevert20.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 400)}) rotate(${top/2.9}deg);`
-        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 2)});`
+        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 10)});`
         if (windowheight > windowwidth) {
             whiskersnoserevert1.style.width =  "100vw";
             whiskersnoserevert2.style.width =  "100vw";
@@ -279,12 +282,14 @@ window.onscroll = function() {
         whiskersnoserevert19.style.opacity = "0%"
         whiskersnoserevert20.style.opacity = "0%"
         cat.style.opacity = "0%"
+	body.style = "background-color: #E1D6CA;";
     };
 };
 window.onresize = function() {
     var top = window.pageYOffset;
     const windowheight = window.innerHeight;
     const windowwidth = window.innerWidth;
+    const body = document.getElementById("body");
     const meow1l1 = document.getElementById("meow1l1");
     const meow1l2 = document.getElementById("meow1l2");
     const meow1l3 = document.getElementById("meow1l3");
@@ -359,7 +364,9 @@ window.onresize = function() {
         };
     };
     if (top > (5 * windowheight) && top < (6 * windowheight)) {
-        whiskersnose.opacity = "100%";
+        whiskersnose.style.opacity = "1";
+	whiskersnoseinvert.style.opacity = "0";
+	body.style = "background-color: #3c4043ff;";
         whiskersnoserevert1.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 20)}) rotate(${(top/2) * -1}deg);`
         whiskersnoserevert2.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 40)}) rotate(${top/2}deg);`
         whiskersnoserevert3.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 60)}) rotate(${(top/2.1) * -1}deg);`
@@ -380,7 +387,7 @@ window.onresize = function() {
         whiskersnoserevert18.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 360)}) rotate(${top/2.8}deg);`
         whiskersnoserevert19.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 380)}) rotate(${(top/2.9) * -1}deg);`
         whiskersnoserevert20.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 400)}) rotate(${top/2.9}deg);`
-        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 2)});`
+        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 10)});`
         if (windowheight > windowwidth) {
             whiskersnoserevert1.style.width =  "100vw";
             whiskersnoserevert2.style.width =  "100vw";
@@ -474,12 +481,14 @@ window.onresize = function() {
         whiskersnoserevert19.style.opacity = "0%"
         whiskersnoserevert20.style.opacity = "0%"
         cat.style.opacity = "0%"
+	body.style = "background-color: #E1D6CA;";
     };
 };
 window.onload = function() {
     var top = window.pageYOffset;
     const windowheight = window.innerHeight;
     const windowwidth = window.innerWidth;
+    const body = document.getElementById("body");
     const meow1l1 = document.getElementById("meow1l1");
     const meow1l2 = document.getElementById("meow1l2");
     const meow1l3 = document.getElementById("meow1l3");
@@ -554,7 +563,9 @@ window.onload = function() {
         };
     };
     if (top > (5 * windowheight) && top < (6 * windowheight)) {
-        whiskersnose.opacity = "100%";
+        whiskersnose.style.opacity = "1";
+	body.style = "background-color: #3c4043ff;";
+	whiskersnoseinvert.style.opacity = "0";
         whiskersnoserevert1.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 20)}) rotate(${(top/2) * -1}deg);`
         whiskersnoserevert2.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 40)}) rotate(${top/2}deg);`
         whiskersnoserevert3.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 60)}) rotate(${(top/2.1) * -1}deg);`
@@ -575,7 +586,7 @@ window.onload = function() {
         whiskersnoserevert18.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 360)}) rotate(${top/2.8}deg);`
         whiskersnoserevert19.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 380)}) rotate(${(top/2.9) * -1}deg);`
         whiskersnoserevert20.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 400)}) rotate(${top/2.9}deg);`
-        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 2)});`
+        cat.style = `position: fixed; top: 50%; left: 50%; opacity: 100%; transform: translateX(-50%) translateY(-50%) scale(${(top - (5 * windowheight)) / (windowheight / 10)});`
         if (windowheight > windowwidth) {
             whiskersnoserevert1.style.width =  "100vw";
             whiskersnoserevert2.style.width =  "100vw";
@@ -669,9 +680,10 @@ window.onload = function() {
         whiskersnoserevert19.style.opacity = "0%"
         whiskersnoserevert20.style.opacity = "0%"
         cat.style.opacity = "0%"
+	body.style = "background-color: #E1D6CA;";
     };
 };
 </script>
-<h1 id="pad" style="padding: 700vh 0px 0px 0px; margin: 0;"></h1>
+<h1 id="pad" style="padding: 630vh 0px 0px 0px; margin: 0;"></h1>
 </body>
 </html>
