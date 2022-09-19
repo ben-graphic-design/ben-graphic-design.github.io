@@ -47,7 +47,7 @@
     <img id="object2" src="object2.svg" style="position: fixed; bottom: -20vh; left: -20vw;">
     <img id="object1" src="object1.svg" style="position: fixed; top: -20vh; right: -20vw;">
     <h1 id="portfoliotext" style="position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);">Graphic Design Portfolio</h1>
-    <button style="position: fixed; bottom: 1%; background: none; border: none; margin: 0; padding: 0; font-family: DMSans; font-weight: bold; text-align: center; font-size: 3vw; color: #3c4043ff; transform: translateY(-50%); width: 100%;" onclick="scrollToBottom();">Scroll</button>
+    <button id="scrollbutton" style="position: fixed; bottom: 1%; background: none; border: none; margin: 0; padding: 0; font-family: DMSans; font-weight: bold; text-align: center; font-size: 3vw; color: #3c4043ff; transform: translateY(-50%); width: 100%;" onclick="scrollToBottom();">Scroll</button>
     <img id="object1over" src="object1.svg" style="position: fixed; top: -20vh; right: -20vw; opacity: 0%;">
     <ul id="imgdivnavbar" style="positon: absolute; top: 0px; left: 0px; width: 100%; z-index: 999; height: calc(3vh + 3vw);">
         <li><a id="nav1" href="index.html" class="active">Home</a></li>
@@ -78,6 +78,7 @@ window.onload = function() {
     const pad = document.getElementById("pad");
     const navbar = document.getElementById("navbar");
     const imgdivnavbar = document.getElementById("imgdivnavbar");
+    const scrollbutton = document.getElementById("scrollbutton");
     pad.style = `padding: ${window.innerHeight + 2200}px 0px 0px 0px; margin: 0;`
     soontext.style = "width: 80%; text-align: center; margin: 0 auto; font-size: 18vw; color: #3c4043ff;"
     // soontext.style.marginBottom = `${(window.innerHeight - soontext.clientHeight)/2}px`;
@@ -106,6 +107,7 @@ window.onload = function() {
         bynametext.style = `position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(0) translateY(-50%); opacity: 0%;`;
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(${top/2000+1}); height: 100%; width: 100%; display: grid; margins: auto;  z-index: 100;`;
 	imgdivnavbar.style = `positon: absolute; top: 0px; left: 0px; width: 100%; z-index: 999; height: calc(3vh + 3vw); filter: blur(${top/100}px);`;
+	scrollbutton.style = `position: fixed; bottom: 1%; background: none; border: none; margin: 0; padding: 0; font-family: DMSans; font-weight: bold; text-align: center; font-size: 3vw; color: #3c4043ff; transform: translateY(-50%); width: 100%; filter: blur(${top/100}px);`;
 	console.log(top/100);
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
@@ -120,6 +122,7 @@ window.onload = function() {
         bynametext.style = `position: fixed; top: ${100 - (50 * textscale)}%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(${textscale}) translateY(-50%); opacity: ${textscale*100}%;`;
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(1.5); height: 100%; width: 100%; display: grid; margins: auto;`;
         imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
 	portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
     } else if (top > 1500) {
@@ -132,6 +135,7 @@ window.onload = function() {
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%); opacity: 0%;"
         bynametext.style = `position: fixed; top: ${(windowheight/2) - (top - 1500)}px; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1) translateY(-50%); opacity: ${100 - ((top - 1500)/5)}%;`
 	imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
 	if (top < 1750) {
 	    navbar.style = `position: fixed; top: 0px; left: 0px; width: 100%; opacity: ${(top-1500)/2.5}%; z-index: 100; filter: blur(${((250 - (top - 1500)) / 100)}px);`;
 	} else {
@@ -167,6 +171,7 @@ window.onscroll = function() {
     const portfoliotext = document.getElementById("portfoliotext");
     const navbar = document.getElementById("navbar");
     const imgdivnavbar = document.getElementById("imgdivnavbar");
+    const scrollbutton = document.getElementById("scrollbutton");
     if (top <= 1000) {
         placeObj(object1, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
         placeObj(object1over, initialposition, finalposition, halfimgheight, quadease, initialposition2, finalposition2, linear, rotate);
@@ -179,6 +184,7 @@ window.onscroll = function() {
         bynametext.style = `position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(0) translateY(-50%); opacity: 0%;`;
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(${top/2000+1}); height: 100%; width: 100%; display: grid; margins: auto;  z-index: 100;`;
         imgdivnavbar.style = `positon: absolute; top: 0px; left: 0px; width: 100%; z-index: 999; height: calc(3vh + 3vw); filter: blur(${top/100}px);`;
+	scrollbutton.style = `position: fixed; bottom: 1%; background: none; border: none; margin: 0; padding: 0; font-family: DMSans; font-weight: bold; text-align: center; font-size: 3vw; color: #3c4043ff; transform: translateY(-50%); width: 100%; filter: blur(${top/100}px);`;
 	portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
     } else if (top > 1000 && top <= 1500) {
@@ -192,6 +198,7 @@ window.onscroll = function() {
         bynametext.style = `position: fixed; top: ${100 - (50 * textscale)}%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(${textscale}) translateY(-50%); opacity: ${textscale*100}%;`;
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(1.5); height: 100%; width: 100%; display: grid; margins: auto;`;
 	imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
     } else if (top > 1500) {
@@ -211,6 +218,7 @@ window.onscroll = function() {
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%); opacity: 0%;"
         bynametext.style = `position: fixed; top: ${(windowheight/2) - (top - 1500)}px; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1) translateY(-50%); opacity: ${100 - ((top - 1500)/5)}%;`
 	imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
 	if (top < 1750) {
 		navbar.style = `position: fixed; top: 0px; left: 0px; width: 100%; opacity: ${(top - 1500) / 2.5}%; z-index: 100; filter: blur(${((250 - (top - 1500)) / 100)}px);`;
 		// navbar.style = `position: fixed; top: 0px; left: 0px; width: 100%; opacity: 100%;`;
@@ -246,6 +254,7 @@ window.onresize = function() {
     const pad = document.getElementById("pad");
     const navbar = document.getElementById("navbar");
     const imgdivnavbar = document.getElementById("imgdivnavbar");
+    const scrollbutton = document.getElementById("scrollbutton");
     const soontext = document.getElementById("soontext");
     pad.style = `padding: ${window.innerHeight + 2200}px 0px 0px 0px;`
     soontext.style = "width: 80%; text-align: center; margin: auto; font-size: 18vw; color: #3c4043ff;"
@@ -265,7 +274,8 @@ window.onresize = function() {
         object2.style.height = `${((window.innerHeight * 0.7) + (window.innerWidth * 1.3)) / 3}px`;
         bynametext.style = `position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(0) translateY(-50%); opacity: 0%;`;
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(${top/2000+1}); height: 100%; width: 100%; display: grid; margins: auto;`;
-        imgdivnavbar.style = `positon: absolute; top: 0px; left: 0px; width: 100%; z-index: 999; height: calc(3vh + 3vw); filter: blur(${top/100}px);`;
+        scrollbutton.style = `position: fixed; bottom: 1%; background: none; border: none; margin: 0; padding: 0; font-family: DMSans; font-weight: bold; text-align: center; font-size: 3vw; color: #3c4043ff; transform: translateY(-50%); width: 100%; filter: blur(${top/100}px);`;
+	imgdivnavbar.style = `positon: absolute; top: 0px; left: 0px; width: 100%; z-index: 999; height: calc(3vh + 3vw); filter: blur(${top/100}px);`;
 	portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
     } else if (top > 1000 && top <= 1500) {
@@ -280,6 +290,7 @@ window.onresize = function() {
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100%; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%);"
 	navbar.style = "position: fixed; top: 0px; left: 0px; width: 100%; opacity: 0%;";
 	imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
     } else if (top > 1500) {
         imgdiv.style = `position: fixed; top: 0px; left: 0px; transform: scale(1.5); height: 100%; width: 100%; display: grid; margins: auto;`;
         object1.style = `position: fixed; top: ${finalposition - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * 1) / 2)}px; right: ${finalposition2 - (((windowheight * 0.7) + (windowwidth * 1.3))/6)  - (((window.innerHeight + window.innerWidth) * 1) / 2)}px; transform: rotate(${rotate}deg);;`;
@@ -295,6 +306,7 @@ window.onresize = function() {
         portfoliotext.style = "position: fixed; top: 50%; margin: auto; width: 100vw; text-align: center; font-size: 4.5vw; color: #3c4043ff; transform: translateY(-50%); opacity: 0%;"
         bynametext.style = `position: fixed; top: ${(windowheight/2) - (top - 1500)}px; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1) translateY(-50%); opacity: ${100 - ((top - 1500)/5)}%;`
 	imgdivnavbar.style = "opacity: 0;"
+	scrollbutton.style = "opacity: 0;"
 	if (top < 1750) {
 	navbar.style = `position: fixed; top: 0px; left: 0px; width: 100%; opacity: ${(top-1500)/2.5}%; z-index: 100; filter: blur(${((250 - (top - 1500)) / 100)}px);`;
 	} else {
