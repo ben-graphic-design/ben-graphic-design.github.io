@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Possum</title>
+    <style>
+        @font-face { font-family: DMSans; src: url('../DMSans-Regular.ttf'); font-display: swap; }
+        @font-face { font-family: DMSans; font-weight: medium; src: url('../DMSans-Medium.ttf'); font-display: swap; }
+        @font-face { font-family: DMSans; font-weight: bold; src: url('../DMSans-Bold.ttf'); font-display: swap; }
+        h1 { font-family: DMSans; font-weight: bold; }
+	li { font-family: DMSans; padding-right: 10px; float: left;}
+	ul {
+  	list-style-type: none;
+ 	 margin: 0;
+ 	 padding: 0;
+ 	 overflow: hidden;
+ 	 background-color: #FDFDFD;
+	}
+	li a {
+  	display: block;
+  	color: #3c4043ff;
+  	text-align: center;
+  	padding: calc(0.25vw + 0.25vh);
+ 	text-decoration: none;
+	background-color: #cebeac;
+	border-radius: 100vw;
+	margin: 1vw;
+	font-size: calc(2vh + 0.5vw);
+	}
+
+	li a:hover:not(.active) {
+  	background-color: #b79a78;
+	}
+	.active {
+	background-color: #d5a543;
+	}
+    </style>
+</head>
+<body style="overflow-y: scroll; overflow-x: hidden;">
+<ul id="navbar" style="position: absolute; top: 0px; left: 0px; width: 100%;">
+  <li><a href="../index.html">Home</a></li>
+  <li><a href="../projects.html">Projects</a></li>
+  <li><a href="../contact.html">Contact</a></li>
+  <li style="float:right"><a href="../about.html">About</a></li>
+</ul>
+<h1 style="position: relative; top: calc(2.75vh + 3vw); color: #3c4043ff; font-size: 4vh; width: 100%; text-align: center;">Final Project</h1>
+<div style="positon: absolute; left: 0px; top: calc(2.75vh + 3vw); margin: 0;">
+	<img src="./pr7/possum-2.svg" style="position: relative; top: calc(2.75vh + 3vw); width: calc(100vw - (2vh + 56px)); text-align: center; margin: 1vh; border-radius: 25px; padding: 20px; background: #dddddd;">
+	<p style="position: relative; top: calc(2.75vh + 3vw); width: calc(100% - calc(40px + 2vh)); text-align: center; margin: 1vh; font-size: 3vh; border-radius: 25px; padding: 20px; background: #dddddd; font-family: DMSans; font-weight: medium;">
+	This was the final assignment of the class, to make something cool for a garment
+	</p>
+</div>
+</body>
+</html>
