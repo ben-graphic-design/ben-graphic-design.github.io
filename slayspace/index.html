@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slay Space</title>
+    <style>
+        @font-face { font-family: DMSans; src: url('DMSans-Regular.ttf'); font-display: swap; }
+        @font-face { font-family: DMSans; font-weight: medium; src: url('DMSans-Medium.ttf'); font-display: swap; }
+        @font-face { font-family: DMSans; font-weight: bold; src: url('DMSans-Bold.ttf'); font-display: swap; }
+        h1 { font-family: DMSans; font-weight: bold; }
+    </style>
+</head>
+<body id="body">
+
+<div id="imgdiv" style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100;">
+    <img id="plume" src="./objects/plume.svg">
+    <img id="straw" src="./objects/straw.svg">
+    <img id="drack" src="./objects/drack.svg">
+    <img id="flare" src="./objects/flare.svg">
+    <img id="reane" src="./objects/reane.svg">
+    <img id="vear" src="./objects/vear.svg">
+    <img id="brane" src="./objects/brane.svg">
+    <img id="gear" src="./objects/gear.svg">
+<!--    <img id="object1" src="object1.svg" style="position: fixed; top: -20vh; right: -20vw;">-->
+    <h1 id="bynametext" style="position: fixed; top: 100%; margin: auto; width: 100%; text-align: center; font-size: 18vw; color: #3c4043ff; opacity: 0%; transform: translateY(-50%);">Slay Space</h1>
+    <img id="rocket" src="./objects/fakerocket.png" style="position: fixed; bottom: -20vh; right: -10vw; width: 70vw;">
+</div>
+
+<div id="imgdiv2" style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100;">
+    <img id="rocket2" src="./objects/fakerocket2.png" style="position: fixed; bottom: -20vh; left: -20vw;">
+    <img id="text" src="./objects/text.png" style="position: fixed; top: 0; right: 0;">
+</div>
+
+<script>
+const main = () => {
+    const top = window.pageYOffset;
+    const windowheight = window.innerHeight;
+    const windowwidth = window.innerWidth;
+    const body = document.getElementById("body");
+    const plume = document.getElementById("plume");
+    const straw = document.getElementById("straw");
+    const drack = document.getElementById("drack");
+    const flare = document.getElementById("flare");
+    const reane = document.getElementById("reane");
+    const vear = document.getElementById("vear");
+    const brane = document.getElementById("brane");
+    const gear = document.getElementById("gear");
+    const imgdiv = document.getElementById("imgdiv");
+    const imgdiv2 = document.getElementById("imgdiv2");
+    const soontext = document.getElementById("bynametext");
+    const rocket = document.getElementById("rocket");
+    const rocket2 = document.getElementById("rocket2");
+    console.log("window height:");
+    console.log(windowheight);
+    console.log("top:");
+    console.log(top);
+    if (top <= (2 * windowheight)) {
+        toprelative = (top / (windowheight * 2))
+        starthex = { r:160, g:238, b:193 };
+        endhex = { r:0, g:0, b:0 };
+        currentcolor = {};
+        components = ["r", "g", "b"];
+        for (var i = 0; i < components.length; i++) {
+            c = components[i];
+            currentcolor[c] = Math.round(starthex[c] + ((endhex[c] - starthex[c]) * toprelative))
+        }
+        currentcolorhexr = currentcolor["r"].toString(16);
+        currentcolorhexg = currentcolor["g"].toString(16);
+        currentcolorhexb = currentcolor["b"].toString(16);
+        if (currentcolorhexr.length == 1) {
+            currentcolorhexr = "0" + currentcolorhexr
+        }
+        if (currentcolorhexg.length == 1) {
+            currentcolorhexg = "0" + currentcolorhexg
+        }
+        if (currentcolorhexb.length == 1) {
+            currentcolorhexb = "0" + currentcolorhexb
+        }
+        currentcolorhex = "#" + currentcolorhexr + currentcolorhexg + currentcolorhexb
+        body.style = `background-color: ${currentcolorhex}`
+    } else {
+        body.style = "background-color: #000000"
+    }
+    if (top <= windowheight) {
+        toprelative = (top / windowheight);
+        ohmygodwhatisthisfunction = (((toprelative/(1/1.125))*(toprelative/(1/1.125))*(toprelative/(1/1.125)))*(3-(2*(toprelative/(1/1.125))))/1.0679)
+        imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunction)
+        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform});`
+        strawplumerotateform = (4*(top/(windowheight*2))*(1-(top/(windowheight*2))))
+        plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(${strawplumerotateform*-30}deg);`
+        straw.style = `position: fixed; bottom: 10vh; right: -10vw; transform: rotate(${strawplumerotateform*40}deg);`
+        drack.style = `position: fixed; top: 10vh; left: -10vw; transform: rotate(${strawplumerotateform*-50}deg);`
+        flare.style = `position: fixed; bottom: 10vh; left: -10vw; transform: rotate(${strawplumerotateform*30}deg);`
+        reane.style = `position: fixed; bottom: 10vh; left: 20vw; transform: rotate(${strawplumerotateform*-40}deg);`
+        vear.style = `position: fixed; top: 10vh; left: 20vw; transform: rotate(${(strawplumerotateform*50)-50}deg);`
+        brane.style = `position: fixed; top: 10vh; right: 10vw; transform: rotate(${strawplumerotateform*-60}deg);`
+        gear.style = `position: fixed; top: 20vh; right: 10vw; transform: rotate(${strawplumerotateform*50}deg);`
+        soontext.style = `position: fixed; top: ${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*100}%; margin: auto; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1); opacity: ${(windowheight/top)*100}%; filter: blur(${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*10}px);`;
+        rocket.style = `position: fixed; bottom: ${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*100}%; right: -10vw; margin: auto; transform: scale(${windowheight/(windowheight - top)}; translateY(-50%); opacity: ${(windowheight/top)*100}%; filter: blur(${(windowheight - top)}px);`;
+        rocket2.style = "opacity: 0%"
+        text.style = "opacity: 0%"
+        if (windowheight >= windowwidth) {
+            rocket.style.width = "80vw";
+            plume.style.width = "80vw";
+            straw.style.width = "90vw";
+            drack.style.width = "90vw";
+            flare.style.width = "60vw";
+            reane.style.width = "80vw";
+            vear.style.width = "80vw";
+            brane.style.width = "70vw";
+            gear.style.width = "70vw";
+        } else {
+            rocket.style.height = "80vh";
+            plume.style.height = "80vh";
+            straw.style.height = "90vh";
+            drack.style.height = "90vh";
+            flare.style.height = "60vh";
+            reane.style.height = "80vh";
+            vear.style.height = "80vh";
+            brane.style.height = "70vh";
+            gear.style.height = "70vh";
+        }
+    } else if ((top > windowheight) && (top <= (2 * windowheight))) {
+        toprelative = ((top - windowheight) / windowheight);
+        ohmygodwhatisthisfunctionversion2 = (((((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125))*(-3-2*((toprelative / (1 / 1.125))-1.125)))/1.0679)
+        imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunctionversion2)
+        imgdiv2scaleform = 1 + (0.2 - (0.2 * ohmygodwhatisthisfunctionversion2))
+        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); filter: blur(${toprelative * toprelative * toprelative * toprelative * (windowheight/2)}px)`
+        imgdiv2.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdiv2scaleform}); filter: blur(${(windowheight/2) * ohmygodwhatisthisfunctionversion2}px);`
+        rocket.style = "opacity: 0%";
+        soontext.style = "opacity: 0%";
+        plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(-30deg); opacity: ${(1 - toprelative)*100}%;`
+        straw.style = `position: fixed; bottom: 10vh; right: -10vw; transform: rotate(40deg); opacity: ${(1 - toprelative)*100}%;`
+        drack.style = `position: fixed; top: 10vh; left: -10vw; transform: rotate(-50deg); opacity: ${(1 - toprelative)*100}%;`
+        flare.style = `position: fixed; bottom: 10vh; left: -10vw; transform: rotate(30deg); opacity: ${(1 - toprelative)*100}%;`
+        reane.style = `position: fixed; bottom: 10vh; left: 20vw; transform: rotate(-40deg); opacity: ${(1 - toprelative)*100}%;`
+        vear.style = `position: fixed; top: 10vh; left: 20vw; transform: rotate(0deg); opacity: ${(1 - toprelative)*100}%;`
+        brane.style = `position: fixed; top: 10vh; right: 10vw; transform: rotate(-60deg); opacity: ${(1 - toprelative)*100}%;`
+        gear.style = `position: fixed; top: 20vh; right: 10vw; transform: rotate(50deg); opacity: ${(1 - toprelative)*100}%;`
+        rocket2.style = `position: fixed; bottom: calc(-20vh + ${20 * toprelative}vh); left: calc(-20vw + ${20 * toprelative}vw); opacity: ${100 * toprelative * toprelative}%;`
+        text.style = `position: fixed; top: calc(-20vh + ${20 * toprelative}vh); right: calc(-20vw + ${20 * toprelative}vw); opacity: ${100 * toprelative * toprelative}%;`
+        if (windowheight >= windowwidth) {
+            rocket.style.width = "80vw";
+            plume.style.width = "80vw";
+            straw.style.width = "90vw";
+            drack.style.width = "90vw";
+            flare.style.width = "60vw";
+            reane.style.width = "80vw";
+            vear.style.width = "80vw";
+            brane.style.width = "70vw";
+            gear.style.width = "70vw";
+            rocket2.style.width = "90vw";
+            text.style.width = "80vw";
+        } else {
+            rocket.style.height = "80vh";
+            plume.style.height = "80vh";
+            straw.style.height = "90vh";
+            drack.style.height = "90vh";
+            flare.style.height = "60vh";
+            reane.style.height = "80vh";
+            vear.style.height = "80vh";
+            brane.style.height = "70vh";
+            gear.style.height = "70vh";
+            rocket2.style.height = "90vh";
+            text.style.height = "90vh";
+        }
+    }
+};
+window.onload = function() {
+    main();
+};
+window.onscroll = function() {
+    main();
+};
+window.onresize = function() {
+    main();
+};
+</script>
+<h1 id="pad" style="padding: 1000vh 0px 0px 0px; margin: 0;"></h1>
+
+</body>
+</html>
