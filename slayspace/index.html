@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="min-height: 800vh; max-height: 800vh">
 <head>
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Slay Space</title>
@@ -8,6 +8,12 @@
         @font-face { font-family: DMSans; font-weight: medium; src: url('DMSans-Medium.ttf'); font-display: swap; }
         @font-face { font-family: DMSans; font-weight: bold; src: url('DMSans-Bold.ttf'); font-display: swap; }
         h1 { font-family: DMSans; font-weight: bold; }
+        #link:hover:not(.active) {
+  	    background: #dddddd;
+	    }
+	    .active {
+	    background: #d5a543;
+	    }
     </style>
 </head>
 <body id="body">
@@ -31,6 +37,20 @@
     <img id="text" src="./objects/text.png" style="position: fixed; top: 0; right: 0;">
 </div>
 
+<div id="imgdiv3" style="white-space: nowrap;">
+    <h1 id="fact1">insert fancy rocket fact</h1>
+    <h1 id="fact2">insert fancy rocket fact</h1>
+    <h1 id="fact3">insert fancy rocket fact</h1>
+    <h1 id="fact4">insert fancy rocket fact</h1>
+    <h1 id="fact5">insert fancy rocket fact</h1>
+    <h1 id="fact6">insert fancy rocket fact</h1>
+    <h1 id="price">price !!!$</h1>
+</div>
+
+<a id="link" href="./index.html">Register Now</a>
+
+<!--position: absolute; bottom: calc(10vh); display: block; margin-left: auto; margin-right: auto; font-size: 7vh; padding-left: 3vw; padding-right: 3vw; padding-top: 3vh; padding-bottom: 3vh; border-radius: 25px; border: 1vh solid; border-color: #dddddd; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none; text-align: center;-->
+
 <script>
 const main = () => {
     const top = window.pageYOffset;
@@ -47,9 +67,18 @@ const main = () => {
     const gear = document.getElementById("gear");
     const imgdiv = document.getElementById("imgdiv");
     const imgdiv2 = document.getElementById("imgdiv2");
+    const imgdiv3 = document.getElementById("imgdiv3");
     const soontext = document.getElementById("bynametext");
     const rocket = document.getElementById("rocket");
     const rocket2 = document.getElementById("rocket2");
+    const fact1 = document.getElementById("fact1");
+    const fact2 = document.getElementById("fact2");
+    const fact3 = document.getElementById("fact3");
+    const fact4 = document.getElementById("fact4");
+    const fact5 = document.getElementById("fact5");
+    const fact6 = document.getElementById("fact6");
+    const price = document.getElementById("price");
+    const link = document.getElementById("link");
     console.log("window height:");
     console.log(windowheight);
     console.log("top:");
@@ -77,15 +106,40 @@ const main = () => {
             currentcolorhexb = "0" + currentcolorhexb
         }
         currentcolorhex = "#" + currentcolorhexr + currentcolorhexg + currentcolorhexb
-        body.style = `background-color: ${currentcolorhex}`
+        body.style = `background-color: ${currentcolorhex}; overflow-x: hidden;`
+    } else if (top > (6 * windowheight)) {
+        toprelative = ((top - (windowheight * 6)) / (windowheight))
+        starthex = { r:0, g:0, b:0 };
+        endhex = { r:206, g:206, b:206 };
+        currentcolor = {};
+        components = ["r", "g", "b"];
+        for (var i = 0; i < components.length; i++) {
+            c = components[i];
+            currentcolor[c] = Math.round(starthex[c] + ((endhex[c] - starthex[c]) * toprelative))
+        }
+        currentcolorhexr = currentcolor["r"].toString(16);
+        currentcolorhexg = currentcolor["g"].toString(16);
+        currentcolorhexb = currentcolor["b"].toString(16);
+        if (currentcolorhexr.length == 1) {
+            currentcolorhexr = "0" + currentcolorhexr
+        }
+        if (currentcolorhexg.length == 1) {
+            currentcolorhexg = "0" + currentcolorhexg
+        }
+        if (currentcolorhexb.length == 1) {
+            currentcolorhexb = "0" + currentcolorhexb
+        }
+        currentcolorhex = "#" + currentcolorhexr + currentcolorhexg + currentcolorhexb
+        body.style = `background-color: ${currentcolorhex}; overflow-x: hidden;`
     } else {
-        body.style = "background-color: #000000"
+        body.style = "background-color: #000000; overflow-x: hidden;"
     }
     if (top <= windowheight) {
         toprelative = (top / windowheight);
         ohmygodwhatisthisfunction = (((toprelative/(1/1.125))*(toprelative/(1/1.125))*(toprelative/(1/1.125)))*(3-(2*(toprelative/(1/1.125))))/1.0679)
         imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunction)
-        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform});`
+        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); opacity: 100%`
+        imgdiv3.style = "opacity: 0%"
         strawplumerotateform = (4*(top/(windowheight*2))*(1-(top/(windowheight*2))))
         plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(${strawplumerotateform*-30}deg);`
         straw.style = `position: fixed; bottom: 10vh; right: -10vw; transform: rotate(${strawplumerotateform*40}deg);`
@@ -95,6 +149,7 @@ const main = () => {
         vear.style = `position: fixed; top: 10vh; left: 20vw; transform: rotate(${(strawplumerotateform*50)-50}deg);`
         brane.style = `position: fixed; top: 10vh; right: 10vw; transform: rotate(${strawplumerotateform*-60}deg);`
         gear.style = `position: fixed; top: 20vh; right: 10vw; transform: rotate(${strawplumerotateform*50}deg);`
+        fact1.style = "opacity: 0%;"
         soontext.style = `position: fixed; top: ${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*100}%; margin: auto; text-align: center; font-size: 18vw; color: #3c4043ff; transform: scale(1); opacity: ${(windowheight/top)*100}%; filter: blur(${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*10}px);`;
         rocket.style = `position: fixed; bottom: ${((top/windowheight)*(top/windowheight)*(top/windowheight)*(top/windowheight))*100}%; right: -10vw; margin: auto; transform: scale(${windowheight/(windowheight - top)}; translateY(-50%); opacity: ${(windowheight/top)*100}%; filter: blur(${(windowheight - top)}px);`;
         rocket2.style = "opacity: 0%"
@@ -125,8 +180,9 @@ const main = () => {
         ohmygodwhatisthisfunctionversion2 = (((((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125))*(-3-2*((toprelative / (1 / 1.125))-1.125)))/1.0679)
         imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunctionversion2)
         imgdiv2scaleform = 1 + (0.2 - (0.2 * ohmygodwhatisthisfunctionversion2))
-        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); filter: blur(${toprelative * toprelative * toprelative * toprelative * (windowheight/2)}px)`
+        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); filter: blur(${toprelative * toprelative * toprelative * toprelative * (windowheight/2)}px); opacity: ${(1 - toprelative)*100}%;`
         imgdiv2.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdiv2scaleform}); filter: blur(${(windowheight/2) * ohmygodwhatisthisfunctionversion2}px);`
+        imgdiv3.style = "opacity: 0%"
         rocket.style = "opacity: 0%";
         soontext.style = "opacity: 0%";
         plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(-30deg); opacity: ${(1 - toprelative)*100}%;`
@@ -137,7 +193,8 @@ const main = () => {
         vear.style = `position: fixed; top: 10vh; left: 20vw; transform: rotate(0deg); opacity: ${(1 - toprelative)*100}%;`
         brane.style = `position: fixed; top: 10vh; right: 10vw; transform: rotate(-60deg); opacity: ${(1 - toprelative)*100}%;`
         gear.style = `position: fixed; top: 20vh; right: 10vw; transform: rotate(50deg); opacity: ${(1 - toprelative)*100}%;`
-        rocket2.style = `position: fixed; bottom: calc(-20vh + ${20 * toprelative}vh); left: calc(-20vw + ${20 * toprelative}vw); opacity: ${100 * toprelative * toprelative}%;`
+        fact1.style = "opacity: 0%;"
+        rocket2.style = `position: fixed; bottom: calc(-20vh + ${20 * (toprelative*toprelative*(3-2*toprelative))}vh); left: calc(-20vw + ${20 * (toprelative*toprelative*(3-2*toprelative))}vw); opacity: ${100 * toprelative * toprelative}%;`
         text.style = `position: fixed; top: calc(-20vh + ${20 * toprelative}vh); right: calc(-20vw + ${20 * toprelative}vw); opacity: ${100 * toprelative * toprelative}%;`
         if (windowheight >= windowwidth) {
             rocket.style.width = "80vw";
@@ -164,6 +221,160 @@ const main = () => {
             rocket2.style.height = "90vh";
             text.style.height = "90vh";
         }
+    } else if ((top <= (4 * windowheight)) && (top > (2 * windowheight))) {
+        toprelative = ((top - (windowheight * 2)) / (windowheight * 2));
+        imgdiv.style = "opacity: 0%;"
+        imgdiv2.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(1.2);`
+        imgdiv3.style = "opacity: 0%"
+        text.style = `position: fixed; top: calc(${20 * toprelative}vh + ${toprelative * toprelative * toprelative * windowheight}px); right: calc(${20 * toprelative}vw + ${toprelative * toprelative * toprelative * windowwidth}px); opacity: 100%;`;
+        if (windowheight >= windowwidth) {
+            offsetposrethinkhorizontal = 0.05 * windowwidth
+            offsetposrethinkvertical = (windowheight - (0.9 * windowwidth)) / 2
+        } else {
+            offsetposrethinkhorizontal = (windowwidth - (0.9 * windowheight)) / 2
+            offsetposrethinkvertical = 0.05 * windowheight
+        }
+        rocket2.style = `position: fixed; bottom: calc(${offsetposrethinkvertical * (toprelative*toprelative*(3-2*toprelative))}px); left: calc(${offsetposrethinkhorizontal * (toprelative*toprelative*(3-2*toprelative))}px); opacity: 100%; `
+        if (windowheight >= windowwidth) {
+            text.style.width = "80vw";
+            rocket2.style.width = "90vw";
+        } else {
+            text.style.height = "90vh";
+            rocket2.style.height = "90vh";
+        }
+    } else if ((top <= (5 * windowheight)) && (top > (4 * windowheight))) {
+        toprelative = ((top - (windowheight * 4)) / (windowheight))
+        imgdiv.style = "opacity: 0%;"
+        imgdiv3.style = "opacity: 100%; white-space: nowrap;"
+        if (windowheight >= windowwidth) {
+            leftcircle1 = Math.sin((toprelative * 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle1 = Math.cos((toprelative * 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) - 1)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) - 1)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) - 2)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) - 2)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) - 3)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) - 3)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) - 4)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) - 4)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5) - 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5) - 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            factheight = (windowheight * 0.04)
+        } else {
+            leftcircle1 = Math.sin((toprelative * 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle1 = Math.cos((toprelative * 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) - 1)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) - 1)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) - 2)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) - 2)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) - 3)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) - 3)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) - 4)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) - 4)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5) - 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5) - 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            factheight = (windowwidth * 0.02)
+        }
+        text.style = "opacity: 0%"
+        rocket2.style = `position: fixed; top: calc(50%); left: calc(50%); transform: translateY(-50%) translateX(-50%); filter: blur(${(windowheight * toprelative * toprelative)}px); opacity: ${100 * (1 - toprelative)}%;`
+        fact1.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle1)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle1)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        fact2.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle2)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle2)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        fact3.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle3)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle3)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        fact4.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle4)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle4)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        fact5.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle5)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle5)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        fact6.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle6)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle6)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
+        if (windowheight >= windowwidth) {
+            rocket2.style.width = "90vw";
+        } else {
+            rocket2.style.height = "90vh";
+        }
+    } else if ((top <= (6 * windowheight)) && (top > (5 * windowheight))) {
+        toprelative = ((top - (windowheight * 5)) / (windowheight))
+        imgdiv.style = "opacity: 0%; width: 0px;"
+        imgdiv2.style = "opacity: 0%; width: 0px;"
+        imgdiv3.style = "opacity: 100%; white-space: nowrap; text-align: center;"
+        if (windowheight >= windowwidth) {
+            leftcircle1 = Math.sin(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle1 = Math.cos(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) + 4)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) + 4)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) + 3)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) + 3)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) + 2)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) + 2)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) + 1)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) + 1)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5))) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5))) * ((windowheight / 2) - (windowheight * 0.1))
+            factheight = (windowheight * 0.04)
+            priceheight = (windowheight * 0.06)
+        } else {
+            leftcircle1 = Math.sin(((toprelative * 5) + 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle1 = Math.cos(((toprelative * 5) + 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) + 4)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) + 4)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) + 3)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) + 3)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) + 2)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) + 2)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) + 1)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) + 1)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5))) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5))) * ((windowwidth / 2) - (windowwidth * 0.1))
+            factheight = (windowwidth * 0.02)
+            priceheight = (windowwidth * 0.06)
+        }
+        fact1.style = `position: fixed; top: calc(50% - ${(leftcircle1)}px); left: calc(50% + ${(bottomcircle1)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact2.style = `position: fixed; top: calc(50% - ${(leftcircle2)}px); left: calc(50% + ${(bottomcircle2)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact3.style = `position: fixed; top: calc(50% - ${(leftcircle3)}px); left: calc(50% + ${(bottomcircle3)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact4.style = `position: fixed; top: calc(50% - ${(leftcircle4)}px); left: calc(50% + ${(bottomcircle4)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact5.style = `position: fixed; top: calc(50% - ${(leftcircle5)}px); left: calc(50% + ${(bottomcircle5)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact6.style = `position: fixed; top: calc(50% - ${(leftcircle6)}px); left: calc(50% + ${(bottomcircle6)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        price.style = `position: fixed; top: 50%; left: 50%; text-align: center; font-size: ${priceheight}px; margin: 0; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%); filter: blur(${(1 - toprelative) * factheight}px);`
+    } else if ((top <= (7 * windowheight)) && (top > (6 * windowheight))) {
+        toprelative = ((top - (windowheight * 6)) / (windowheight))
+        imgdiv.style = "opacity: 0%; width: 0px;"
+        imgdiv2.style = "opacity: 0%; width: 0px;"
+        imgdiv3.style = "opacity: 100%; white-space: nowrap; text-align: center;"
+        if (windowheight >= windowwidth) {
+            leftcircle1 = Math.sin(((toprelative * 5) + 10)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle1 = Math.cos(((toprelative * 5) + 10)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) + 9)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) + 9)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) + 8)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) + 8)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) + 7)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) + 7)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) + 6)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) + 6)) * ((windowheight / 2) - (windowheight * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
+            factheight = (windowheight * 0.04)
+            priceheight = (windowheight * 0.06)
+        } else {
+            leftcircle1 = Math.sin(((toprelative * 5) + 10)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle1 = Math.cos(((toprelative * 5) + 10)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle2 = Math.sin(((toprelative * 5) + 9)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle2 = Math.cos(((toprelative * 5) + 9)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle3 = Math.sin(((toprelative * 5) + 8)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle3 = Math.cos(((toprelative * 5) + 8)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle4 = Math.sin(((toprelative * 5) + 7)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle4 = Math.cos(((toprelative * 5) + 7)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle5 = Math.sin(((toprelative * 5) + 6)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle5 = Math.cos(((toprelative * 5) + 6)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            leftcircle6 = Math.sin(((toprelative * 5) + 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            bottomcircle6 = Math.cos(((toprelative * 5) + 5)) * ((windowwidth / 2) - (windowwidth * 0.1))
+            factheight = (windowwidth * 0.02)
+            priceheight = (windowwidth * 0.06)
+        }
+        fact1.style = `position: fixed; top: calc((50% - ${(leftcircle1)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle1)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact2.style = `position: fixed; top: calc((50% - ${(leftcircle2)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle2)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact3.style = `position: fixed; top: calc((50% - ${(leftcircle3)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle3)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact4.style = `position: fixed; top: calc((50% - ${(leftcircle4)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle4)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact5.style = `position: fixed; top: calc((50% - ${(leftcircle5)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle5)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        fact6.style = `position: fixed; top: calc((50% - ${(leftcircle6)}px) - ${toprelative * toprelative * windowheight}px); left: calc(50% + ${(bottomcircle6)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        price.style = `position: fixed; top: calc(50% - ${toprelative * toprelative * windowheight}px); left: 50%; text-align: center; font-size: ${priceheight}px; margin: 0; color: #FFFFFF; opacity: 100%; transform: translateY(-50%) translateX(-50%);`
+        link.style = `position: fixed; top: calc(150% - ${toprelative * toprelative * windowheight}px); left: 50%; transform: translateY(-50%) translateX(-50%); display: block; margin-left: auto; margin-right: auto; font-size: 7vh; padding-left: 3vw; padding-right: 3vw; padding-top: 3vh; padding-bottom: 3vh; border-radius: 25px; border: 1vh solid; border-color: #dddddd; font-family: DMSans; font-weight: medium; color: #3c4043ff; text-decoration: none; text-align: center;`
     }
 };
 window.onload = function() {
@@ -176,7 +387,7 @@ window.onresize = function() {
     main();
 };
 </script>
-<h1 id="pad" style="padding: 1000vh 0px 0px 0px; margin: 0;"></h1>
+<!--<h1 id="pad" style="padding: 1000vh 0px 0px 0px; margin: 0;"></h1>-->
 
 </body>
 </html>
