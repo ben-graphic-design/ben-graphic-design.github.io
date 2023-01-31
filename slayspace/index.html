@@ -140,6 +140,7 @@ const main = () => {
         imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunction)
         imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); opacity: 100%`
         imgdiv3.style = "opacity: 0%"
+        link.style = "opacity: 0%"
         strawplumerotateform = (4*(top/(windowheight*2))*(1-(top/(windowheight*2))))
         plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(${strawplumerotateform*-30}deg);`
         straw.style = `position: fixed; bottom: 10vh; right: -10vw; transform: rotate(${strawplumerotateform*40}deg);`
@@ -180,9 +181,10 @@ const main = () => {
         ohmygodwhatisthisfunctionversion2 = (((((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125)*((toprelative / (1 / 1.125))-1.125))*(-3-2*((toprelative / (1 / 1.125))-1.125)))/1.0679)
         imgdivscaleform = 0.8 + (0.2 * ohmygodwhatisthisfunctionversion2)
         imgdiv2scaleform = 1 + (0.2 - (0.2 * ohmygodwhatisthisfunctionversion2))
-        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); filter: blur(${toprelative * toprelative * toprelative * toprelative * (windowheight/2)}px); opacity: ${(1 - toprelative)*100}%;`
+        imgdiv.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdivscaleform}); filter: blur(${toprelative * toprelative * toprelative * toprelative * (windowheight/5)}px); opacity: ${(1 - toprelative)*100}%;`
         imgdiv2.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(${imgdiv2scaleform}); filter: blur(${(windowheight/2) * ohmygodwhatisthisfunctionversion2}px);`
         imgdiv3.style = "opacity: 0%"
+        link.style = "opacity: 0%"
         rocket.style = "opacity: 0%";
         soontext.style = "opacity: 0%";
         plume.style = `position: fixed; bottom: 0; right: -10vw; transform: rotate(-30deg); opacity: ${(1 - toprelative)*100}%;`
@@ -226,6 +228,7 @@ const main = () => {
         imgdiv.style = "opacity: 0%;"
         imgdiv2.style = `position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; display: grid; margins: auto; z-index: 100; transform: scale(1.2);`
         imgdiv3.style = "opacity: 0%"
+        link.style = "opacity: 0%"
         text.style = `position: fixed; top: calc(${20 * toprelative}vh + ${toprelative * toprelative * toprelative * windowheight}px); right: calc(${20 * toprelative}vw + ${toprelative * toprelative * toprelative * windowwidth}px); opacity: 100%;`;
         if (windowheight >= windowwidth) {
             offsetposrethinkhorizontal = 0.05 * windowwidth
@@ -246,6 +249,7 @@ const main = () => {
         toprelative = ((top - (windowheight * 4)) / (windowheight))
         imgdiv.style = "opacity: 0%;"
         imgdiv3.style = "opacity: 100%; white-space: nowrap;"
+        link.style = "opacity: 0%"
         if (windowheight >= windowwidth) {
             leftcircle1 = Math.sin((toprelative * 5)) * ((windowheight / 2) - (windowheight * 0.1))
             bottomcircle1 = Math.cos((toprelative * 5)) * ((windowheight / 2) - (windowheight * 0.1))
@@ -276,7 +280,7 @@ const main = () => {
             factheight = (windowwidth * 0.02)
         }
         text.style = "opacity: 0%"
-        rocket2.style = `position: fixed; top: calc(50%); left: calc(50%); transform: translateY(-50%) translateX(-50%); filter: blur(${(windowheight * toprelative * toprelative)}px); opacity: ${100 * (1 - toprelative)}%;`
+        rocket2.style = `position: fixed; top: calc(50%); left: calc(50%); transform: translateY(-50%) translateX(-50%); filter: blur(${((windowheight / 5) * toprelative * toprelative)}px); opacity: ${100 * (1 - toprelative)}%;`
         fact1.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle1)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle1)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
         fact2.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle2)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle2)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
         fact3.style = `position: fixed; top: calc(50% - ${((toprelative * toprelative * (3-2*toprelative)) * leftcircle3)}px); left: calc(50% + ${((toprelative * toprelative * (3-2*toprelative)) * bottomcircle3)}px); font-size: ${factheight}px; text-align: center; color: #FFFFFF; opacity: ${toprelative}; transform: translateY(-50%) translateX(-50%);`
@@ -293,6 +297,7 @@ const main = () => {
         imgdiv.style = "opacity: 0%; width: 0px;"
         imgdiv2.style = "opacity: 0%; width: 0px;"
         imgdiv3.style = "opacity: 100%; white-space: nowrap; text-align: center;"
+        link.style = "opacity: 0%"
         if (windowheight >= windowwidth) {
             leftcircle1 = Math.sin(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
             bottomcircle1 = Math.cos(((toprelative * 5) + 5)) * ((windowheight / 2) - (windowheight * 0.1))
